@@ -1,0 +1,9 @@
+pydub
+langchain-core
+langchain-google-genai
+google-api-core
+ipython
+gradio
+pillow
+scipy
+python-dotenv
