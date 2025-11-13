@@ -500,14 +500,24 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue"), title="Multimodal AI As
     )
 
 
+# -------------------------
+# RENDER + GRADIO + FASTAPI
+# -------------------------
+
+from fastapi import FastAPI
+import os
+import gradio as gr
+
+# Create FastAPI app
 app = FastAPI()
 
-
+# Health endpoint for cron-job.org
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
+# Mount Gradio UI
+app = gr.mount_gradio_app(app, ui, path="/")
 
-PORT = int(os.getenv("PORT", 7860))
-# You would then launch the UI as before
-ui.launch(server_name="0.0.0.0", server_port=PORT)
+# Render will run using:
+# uvicorn main:app --host 0.0.0.0 --port $PORT
