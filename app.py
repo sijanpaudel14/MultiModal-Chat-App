@@ -497,6 +497,6 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue"), title="Multimodal AI As
         inputs=None,
         outputs=[shared_chat_history] + all_chatbots
     )
-
+PORT = int(os.getenv("PORT", 7860))
 # You would then launch the UI as before
-ui.launch(inbrowser=True, debug=True)
+ui.launch(server_name="0.0.0.0", server_port=PORT)
