@@ -3,10 +3,12 @@ import os
 from LLMHandler import LLMHandler
 import gradio as gr
 import base64
+from fastapi import FastAPI
 from PIL import Image
 import io
 import tempfile
 import scipy.io.wavfile
+
 handler = LLMHandler()
 
 
@@ -503,10 +505,6 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue"), title="Multimodal AI As
 # -------------------------
 # RENDER + GRADIO + FASTAPI
 # -------------------------
-
-from fastapi import FastAPI
-import os
-import gradio as gr
 
 # Create FastAPI app
 app = FastAPI()
